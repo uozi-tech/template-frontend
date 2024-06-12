@@ -46,7 +46,7 @@ jobs:
           else
             TITLE="❌ Code Check Failed"
           fi
-          CONTENT="**${TITLE}** \n\n > Repository: ${REPO}\n > Author: ${AUTHOR}\n > Branch: ${BRANCH}\n > Event: \`${EVENT_TYPE}\`\n > Message: ${MESSAGE}\n > Detail: [查看详情](${GITHUB_RUN_URL})"
+          CONTENT="**${TITLE}** \n\n > Repository: \`${REPO}\`\n > Event: \`${EVENT_TYPE}\`\n > Branch: ${BRANCH}\n > Author: ${AUTHOR}\n > Message: ${MESSAGE}\n > Detail: [查看详情](${GITHUB_RUN_URL})"
           echo "CONTENT=${CONTENT}"
           curl -X POST "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${WECOM_BOT_KEY}" \
           -H 'Content-Type: application/json' \
