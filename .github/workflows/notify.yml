@@ -1,0 +1,58 @@
+name: Notify
+
+on:
+  workflow_run:
+    workflows: ['Code Check']
+    types:
+      - requested
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get Commit/PR Info
+        id: info
+        run: |
+          if [ "${{ github.event.workflow_run.event }}" == "push" ]; then
+            echo "EVENT_TYPE=push" >> $GITHUB_ENV
+            echo "Author=${{ github.event.workflow_run.actor.login }}" >> $GITHUB_ENV
+            echo "MESSAGE=${{ github.event.workflow_run.head_commit.message }}" >> $GITHUB_ENV
+          elif [ "${{ github.event.workflow_run.event }}" == "pull_request" ]; then
+            echo "EVENT_TYPE=pull_request" >> $GITHUB_ENV
+            echo "Author=${{ github.event.workflow_run.event.pull_request.user.login }}" >> $GITHUB_ENV
+            echo "MESSAGE=${{ github.event.workflow_run.event.pull_request.title }}" >> $GITHUB_ENV
+          fi
+
+      - name: Notify
+        env:
+          WECOM_BOT_KEY: ${{ secrets.WECOM_UOZI_TECH_BOT_KEY }}
+          REPO: ${{ github.repository }}}}
+          EVENT_TYPE: ${{ env.EVENT_TYPE }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          AUTHOR: ${{ env.Author }}
+          MESSAGE: ${{ env.MESSAGE }}
+          GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}
+          STATUS: ${{ github.event.workflow_run.conclusion || github.event.workflow_run.status }}
+        run: |
+          if [ "${{ env.STATUS }}" == "queued" ] || [ "${{ env.STATUS }}" == "in_progress" ]; then
+            TITLE="🕐 Code Check Started"
+          elif [ "${{ env.STATUS }}" == "success" ]; then
+            TITLE="🎉 Code Check Passed"
+          else
+            TITLE="❌ Code Check Failed"
+          fi
+          CONTENT="**${TITLE}** \n\n > Repository: ${REPO}\n > Author: ${AUTHOR}\n > Branch: ${BRANCH}\n > Event: \`${EVENT_TYPE}\`\n > Message: ${MESSAGE}\n > Detail: [查看详情](${GITHUB_RUN_URL})"
+          echo "CONTENT=${CONTENT}"
+          curl -X POST "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${WECOM_BOT_KEY}" \
+          -H 'Content-Type: application/json' \
+          -d "{
+                \"msgtype\": \"markdown\",
+                \"markdown\": {
+                  \"content\": \"${CONTENT}\"
+                }
+              }"
