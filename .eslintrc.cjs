@@ -53,6 +53,17 @@ module.exports = {
     // ES6
     'arrow-spacing': ['error', { 'before': true, 'after': true }], // 强制箭头函数的箭头前后使用一致的空格
 
+    // Vue
+    'vue/html-indent': ['error', 2],
+    'vue/max-attributes-per-line': ['error', {
+      'singleline': {
+        'max': 1
+      },      
+      'multiline': {
+        'max': 1
+      }
+    }],
+
     // TypeScript
     '@typescript-eslint/no-unused-vars': ['warn'], // 禁止TypeScript未使用的变量
   }
