@@ -10,7 +10,7 @@
     "lint": "eslint --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore .",
     "lint:fix": "eslint --fix --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore .",
     "typecheck": "vue-tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@iconify-json/tabler": "^1.1.113",
