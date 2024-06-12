@@ -11,10 +11,10 @@ const isDark = useDark()
     :theme="isDark ? dark : light"
   >
 
-  <div class="min-h-100vh bg-base dark:bg-dark dark:text-white">
-    <RouterView />
-    <ToggleTheme />
-  </div>
+    <div class="min-h-100vh bg-base dark:bg-dark dark:text-white">
+      <RouterView />
+      <ToggleTheme />
+    </div>
   </AConfigProvider>
 </template>
 
