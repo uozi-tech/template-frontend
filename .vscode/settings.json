@@ -1,0 +1,16 @@
+{
+    // 自动格式化文档
+    "editor.formatOnSave": true,
+    // 在保存时运行eslint --fix
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.fixAll.eslint": "explicit"
+    },
+    // ESLint 插件设置
+    "eslint.format.enable": true,
+    "eslint.validate": [
+      "javascript",
+      "javascriptvue",
+      "typescript",
+    ]
+  }
