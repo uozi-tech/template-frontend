@@ -31,7 +31,7 @@ jobs:
       - name: Notify
         env:
           WECOM_BOT_KEY: ${{ secrets.WECOM_UOZI_TECH_BOT_KEY }}
-          REPO: ${{ github.repository }}}}
+          REPO: ${{ github.repository }}
           EVENT_TYPE: ${{ env.EVENT_TYPE }}
           BRANCH: ${{ github.event.workflow_run.head_branch }}
           AUTHOR: ${{ env.Author }}
