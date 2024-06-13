@@ -55,10 +55,14 @@ function toggleDark(event: MouseEvent) {
 </script>
 
 <template>
-  <a class="select-none"
-     title="Toggle Color Scheme"
-     @click="toggleDark">
-    <i i-tabler-sun-high
-       dark:i-tabler-moon-stars />
+  <a
+    class="select-none"
+    title="Toggle Color Scheme"
+    @click="toggleDark"
+  >
+    <i
+      i-tabler-sun-high
+      dark:i-tabler-moon-stars
+    />
   </a>
 </template>

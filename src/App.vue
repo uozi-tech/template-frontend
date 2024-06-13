@@ -10,7 +10,6 @@ const isDark = useDark()
   <AConfigProvider
     :theme="isDark ? dark : light"
   >
-
     <div class="min-h-100vh bg-base dark:bg-dark dark:text-white">
       <RouterView />
       <ToggleTheme />
