@@ -63,6 +63,31 @@ module.exports = {
         'max': 1
       }
     }],
+    'vue/first-attribute-linebreak': ['error', {
+      'singleline': 'ignore',
+      'multiline': 'below'
+    }],
+    'vue/html-closing-bracket-newline': [
+      'error',
+      {
+        'singleline': 'never',
+        'multiline': 'always',
+        'selfClosingTag': {
+          'singleline': 'never',
+          'multiline': 'always'
+        }
+      }
+    ],
+    'vue/html-closing-bracket-spacing': ['error', {
+      'startTag': 'never',
+      'endTag': 'never',
+      'selfClosingTag': 'always'
+    }],
+    'vue/multiline-html-element-content-newline': ['error', {
+      'ignoreWhenEmpty': true,
+      'allowEmptyLines': false
+    }],
+    'vue/multi-word-component-names': 'off',
 
     // TypeScript
     '@typescript-eslint/no-unused-vars': ['warn'], // 禁止TypeScript未使用的变量
