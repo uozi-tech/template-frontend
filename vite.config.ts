@@ -36,7 +36,7 @@ export default defineConfig(({mode}) => {
       SvgLoader(),
       Components({
         resolvers: [AntDesignVueResolver({ importStyle: false })],
-        directoryAsNamespace: true,
+        directoryAsNamespace: false,
       }),
       AutoImport({
         imports: [

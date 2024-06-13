@@ -1,1 +1,7 @@
-@import '@unocss/reset/tailwind.css';
+@import '@unocss/reset/tailwind-compat.css';
+
+/* 覆盖tailwind-compat的默认border样式 */
+*, ::before, ::after {
+  border-style: none;
+  transition:all .2s ease-in-out;
+}
