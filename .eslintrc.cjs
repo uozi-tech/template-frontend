@@ -31,29 +31,30 @@ module.exports = {
     'vue'
   ],
   rules: {
-    // Possible Errors
+    /** Possible Errors */
     'no-console': 'warn', // 警告使用console.log
     'no-debugger': 'error', // 禁止使用debugger
     'no-extra-semi': 'error', // 禁止不必要的分号
 
-    // Best Practices
+    /** Best Practices */
     'eqeqeq': ['error', 'always'], // 强制使用全等
     'curly': ['error', 'all'], // 强制所有控制语句使用大括号
     'default-case': 'warn', // switch语句必须提供default分支
 
-    // Variables
+    /** Variables */
     'no-unused-vars': ['warn', { 'vars': 'all', 'args': 'after-used', 'ignoreRestSiblings': false }], // 禁止未使用的变量
 
-    // Stylistic Issues
+    /** Stylistic Issues */
     'semi': 'off', // 不使用分号
     'quotes': ['error', 'single'], // 强制使用单引号
     'indent': ['error', 2], // 强制使用2空格缩进
     'linebreak-style': ['error', 'unix'], // 强制使用unix换行风格
+    'object-curly-spacing': ['error', 'always'], // 强制花括号内保持空格的一致性
 
-    // ES6
+    /** ES6 */
     'arrow-spacing': ['error', { 'before': true, 'after': true }], // 强制箭头函数的箭头前后使用一致的空格
-
-    // Vue
+    
+    /** Vue */
     'vue/html-indent': ['error', 2],
     'vue/max-attributes-per-line': ['error', {
       'singleline': {
@@ -63,6 +64,7 @@ module.exports = {
         'max': 1
       }
     }],
+    'vue/mustache-interpolation-spacing': ['error', 'always'], // 强制在模板的 mustache 语法中 spacing
     'vue/first-attribute-linebreak': ['error', {
       'singleline': 'ignore',
       'multiline': 'below'
@@ -89,7 +91,7 @@ module.exports = {
     }],
     'vue/multi-word-component-names': 'off',
 
-    // TypeScript
+    /** TypeScript */
     '@typescript-eslint/no-unused-vars': ['warn'], // 禁止TypeScript未使用的变量
   }
 }
