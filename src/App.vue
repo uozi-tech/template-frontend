@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useDark} from '@vueuse/core';
+import { useDark } from '@vueuse/core';
 import ToggleTheme from '~/components/ToggleTheme.vue';
-import {dark, light} from '~/config/theme';
+import { dark, light } from '~/config/theme';
 
 const isDark = useDark()
 </script>

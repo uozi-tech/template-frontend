@@ -7,10 +7,14 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
+    "test": "vitest",
     "lint": "eslint --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore .",
     "lint:fix": "eslint --fix --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore .",
     "typecheck": "vue-tsc --noEmit",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,cjs,mjs}": ["npm run lint:fix", "git add"]
   },
   "dependencies": {
     "@iconify-json/tabler": "^1.1.113",
@@ -48,6 +52,7 @@
     "happy-dom": "^14.12.0",
     "husky": "^9.0.11",
     "less": "^4.2.0",
+    "lint-staged": "^15.2.7",
     "typescript": "^5.2.2",
     "unocss": "^0.61.0",
     "unplugin-auto-import": "^0.17.6",
